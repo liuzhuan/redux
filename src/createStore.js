@@ -1,3 +1,12 @@
+/**
+ * symbol-observable: Symbol.observable ponyfill
+ * https://github.com/benlesh/symbol-observable
+ *
+ * Observables Proposal for ECMAScript, by Nicolás Bevacqua, 2017/03/13
+ * https://ponyfoo.com/articles/observables-coming-to-ecmascript
+ *
+ *
+ */
 import $$observable from 'symbol-observable'
 
 import ActionTypes from './utils/actionTypes'
@@ -76,6 +85,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
   }
 
   /**
+   * 相当于 addEventListener，但是不需要事件类型
    * Adds a change listener. It will be called any time an action is dispatched,
    * and some part of the state tree may potentially have changed. You may then
    * call `getState()` to read the current state tree inside the callback.

@@ -1,4 +1,5 @@
 /**
+ * 判断是否是普通纯粹的 Object
  * @param {any} obj The object to inspect.
  * @returns {boolean} True if the argument appears to be a plain object.
  */

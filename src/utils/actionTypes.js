@@ -1,4 +1,6 @@
 /**
+ * 生成 Redux 内置的三个动作类型 `INIT`, `REPLACE` 和 `PROBE_UNKNOWN_ACTION`
+ *
  * These are private action types reserved by Redux.
  * For any unknown actions, you must return the current state.
  * If the current state is undefined, you must return the initial state.
