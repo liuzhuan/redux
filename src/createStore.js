@@ -43,6 +43,9 @@ export default function createStore(reducer, preloadedState, enhancer) {
     preloadedState = undefined
   }
 
+  /**
+   * 只要参数不满足期望的值，马上抛错误，写好错误原因，方便后期排错。
+   */
   if (typeof enhancer !== 'undefined') {
     if (typeof enhancer !== 'function') {
       throw new Error('Expected the enhancer to be a function.')
@@ -227,6 +230,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
   }
 
   /**
+   * 用来和响应式编程的类库交互
    * Interoperability point for observable/reactive libraries.
    * @returns {observable} A minimal observable of state changes.
    * For more information, see the observable proposal:

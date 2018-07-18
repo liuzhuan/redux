@@ -1,4 +1,6 @@
 /**
+ * 用来复合函数，即将多个函数合并为一个函数
+ *
  * Composes single-argument functions from right to left. The rightmost
  * function can take multiple arguments as it provides the signature for
  * the resulting composite function.
@@ -18,5 +20,16 @@ export default function compose(...funcs) {
     return funcs[0]
   }
 
+  /**
+   * 精华所在
+   *
+   * 通过 Babel 转译后变为如下格式：
+   *
+   * funcs.reduce(function (a, b) {
+   *   return function () {
+   *     return a(b.apply(undefined, arguments));
+   *   };
+   * });
+   */
   return funcs.reduce((a, b) => (...args) => a(b(...args)))
 }

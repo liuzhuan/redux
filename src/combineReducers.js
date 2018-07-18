@@ -2,6 +2,11 @@ import ActionTypes from './utils/actionTypes'
 import warning from './utils/warning'
 import isPlainObject from './utils/isPlainObject'
 
+/**
+ * Redux 很重视错误日志，为了生成错误日志特意编写了函数
+ * @param {string} key reducer 名称
+ * @param {object} action 动作
+ */
 function getUndefinedStateErrorMessage(key, action) {
   const actionType = action && action.type
   const actionDescription =
@@ -62,6 +67,10 @@ function getUnexpectedStateShapeWarningMessage(
   }
 }
 
+/**
+ * 保证 reducer 函数的正确性
+ * @param {object} reducers
+ */
 function assertReducerShape(reducers) {
   Object.keys(reducers).forEach(key => {
     const reducer = reducers[key]
@@ -115,6 +124,7 @@ function assertReducerShape(reducers) {
 export default function combineReducers(reducers) {
   const reducerKeys = Object.keys(reducers)
   const finalReducers = {}
+  // 过滤得到合法的 reducer 函数
   for (let i = 0; i < reducerKeys.length; i++) {
     const key = reducerKeys[i]
 
